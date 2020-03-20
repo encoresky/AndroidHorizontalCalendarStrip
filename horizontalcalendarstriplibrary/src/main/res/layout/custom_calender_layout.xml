@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".8"
-            android:padding="12dp"
+            android:padding="8dp"
             android:textAlignment="center"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -44,6 +44,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
