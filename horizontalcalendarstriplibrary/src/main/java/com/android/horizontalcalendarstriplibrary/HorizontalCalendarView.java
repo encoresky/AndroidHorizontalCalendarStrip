@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,7 +38,7 @@ public class HorizontalCalendarView extends LinearLayout {
     DateFormat dateFormat;
     Date date;
     LinearLayoutManager linearLayoutManager;
-    ConstraintLayout mainBackground;
+    View mainBackground;
     Object toCallBack;
     private boolean isLoading = false;
     private AppCompatTextView textViewMonthYear;
@@ -234,6 +233,10 @@ public class HorizontalCalendarView extends LinearLayout {
     public void setControlTint(int color) {
         rightImage.setColorFilter(ContextCompat.getColor(context, color), android.graphics.PorterDuff.Mode.SRC_IN);
         leftImage.setColorFilter(ContextCompat.getColor(context, color), android.graphics.PorterDuff.Mode.SRC_IN);
+    }
+
+    public void setMonthTextColor(int color) {
+        textViewMonthYear.setTextColor(ContextCompat.getColor(context, color));
     }
 
     public void showControls(boolean show) {

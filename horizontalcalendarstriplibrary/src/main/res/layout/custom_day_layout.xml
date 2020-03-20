@@ -9,11 +9,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
         android:gravity="center"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.Compat.Notification.Time"
+        android:textSize="12sp"
         android:textColor="@android:color/darker_gray" />
 
     <TextView
@@ -21,10 +20,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:gravity="center"
+        android:layout_marginTop="5dp"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="12sp"
         android:textColor="@android:color/black" />
 </LinearLayout>
