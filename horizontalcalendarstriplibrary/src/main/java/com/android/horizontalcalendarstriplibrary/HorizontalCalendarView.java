@@ -3,6 +3,7 @@ package com.android.horizontalcalendarstriplibrary;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class HorizontalCalendarView extends LinearLayout {
 
@@ -42,6 +44,7 @@ public class HorizontalCalendarView extends LinearLayout {
     Object toCallBack;
     private boolean isLoading = false;
     private AppCompatTextView textViewMonthYear;
+    private Locale locale = Locale.getDefault();
 
     public HorizontalCalendarView(Context context) {
         super(context);
@@ -53,6 +56,13 @@ public class HorizontalCalendarView extends LinearLayout {
         super(context, attrs);
         this.context = context;
         init();
+    }
+
+    public void setLocale(Locale locale){
+        this.locale = locale;
+        calAdapter = null;
+        loadNextPage();
+        postInvalidate();
     }
 
     public void init() {
@@ -124,14 +134,14 @@ public class HorizontalCalendarView extends LinearLayout {
         linearLayoutManager.scrollToPosition(27);
     }
 
-    @SuppressLint("SimpleDateFormat")
     public void loadNextPage() {
         if (calAdapter == null) {
             currentDayModelList = new ArrayList<>();
-            dateFormat = new SimpleDateFormat("MMMM-EEE-yyyy-MM-dd");
+            dateFormat = new SimpleDateFormat("MMMM-EEE-yyyy-MM-dd", locale);
             date = new Date();
             DayDateMonthYearModel currentDayModel = new DayDateMonthYearModel();
             String currentDate = dateFormat.format(date);
+            Log.v("TAG","currentDate " + currentDate);
             String[] partsDate = currentDate.split("-");
             currentDayModel.month = partsDate[0];
             currentDayModel.date = partsDate[4];
@@ -143,7 +153,7 @@ public class HorizontalCalendarView extends LinearLayout {
             cal = Calendar.getInstance();
             cal.setTime(date);
             calPrevious.setTime(date);
-            textViewMonthYear.setText(new SimpleDateFormat("MMMM yyyy").format(new Date()));
+            textViewMonthYear.setText(new SimpleDateFormat("MMMM yyyy",locale).format(new Date()));
 
 
             for (int i = 0; i < 30; i++) {
