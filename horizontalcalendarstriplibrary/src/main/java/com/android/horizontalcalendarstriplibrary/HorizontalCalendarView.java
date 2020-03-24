@@ -61,7 +61,7 @@ public class HorizontalCalendarView extends LinearLayout {
     public void setLocale(Locale locale){
         this.locale = locale;
         calAdapter = null;
-        loadNextPage();
+        init();
         postInvalidate();
     }
 
